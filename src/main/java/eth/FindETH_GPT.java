@@ -13,13 +13,12 @@ import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class TestIvan {
-    private final static int RRS = 1000000;
+public class FindETH_GPT {
+    private final static int RRS = 100;
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         long startTime = System.currentTimeMillis();
-
-        Set<String> stringArrayList = new HashSet<>(RRS);
+        Set<String> stringArrayList = new LinkedHashSet<>(RRS);
         for (int i = 0; i < RRS; i++) {
             stringArrayList.add(random(64));
         }
@@ -28,6 +27,7 @@ public class TestIvan {
         System.out.println("PROGRAM start work ...");
         long h = 0L;
         Map<String, Future<BigDecimal>> futures = getEthereumBalanceAsync(new ArrayList<>(stringArrayList));
+        BigDecimal totalBalance = BigDecimal.ZERO;
         for (Map.Entry<String, Future<BigDecimal>> entry : futures.entrySet()) {
 
             BigDecimal x = BigDecimal.valueOf(0);
@@ -36,9 +36,14 @@ public class TestIvan {
             if (!balanceInEither.equals(x)) {
                 System.out.println("ID " + entry.getKey() + " Balance: " + balanceInEither);
             }
+            totalBalance = totalBalance.add(balanceInEither);
             h++;
         }
-        System.out.println("Number WALLETS: " + h);
+        if (totalBalance.equals(BigDecimal.ZERO)) {
+            System.out.println("Total balance: 0, number of wallets: " + h);
+        } else {
+            System.out.println("Total balance: " + totalBalance + ", number of wallets: " + h);
+        }
         System.out.println("Time work PROGRAM: " + (System.currentTimeMillis() - startTime) / 1000);
         System.exit(1);
     }
@@ -54,14 +59,15 @@ public class TestIvan {
 
     public static Map<String, Future<BigDecimal>> getEthereumBalanceAsync(List<String> ethereumIDsList) throws InterruptedException {
         try {
-            ExecutorService executor = Executors.newFixedThreadPool(8);
+            System.out.println("Number of available cores: " + Runtime.getRuntime().availableProcessors());
+            ExecutorService executor = Executors.newFixedThreadPool(32);
             Map<String, Future<BigDecimal>> futures = ethereumIDsList.stream()
                     .collect(Collectors.toMap(
                             Function.identity(),
                             privateKey -> executor.submit(() -> {
-//                                Web3j web3 = Web3j.build(new HttpService("https://mainnet.infura.io/v3/42e3f26ba3b3456a8517305b2dce2201"));
-//                                Web3j web3 = Web3j.build(new HttpService("https://mainnet.infura.io/v3/cd601df89a60461f9d744777d13769a5"));
-                                Web3j web3 = Web3j.build(new HttpService("https://mainnet.infura.io/v3/22d6a5974f25485397c011159543ae95")); // 695612981anthony@gmail.com
+
+                                // limpet.dex@gmail.com
+                                Web3j web3 = Web3j.build(new HttpService("https://mainnet.infura.io/v3/39ebe0a0b40c4a7f977f6a0c63b8f7c1"));
                                 Credentials credentials = Credentials.create(privateKey);
                                 EthGetBalance balanceWei = web3.ethGetBalance(credentials.getAddress(), DefaultBlockParameterName.LATEST).send();
                                 BigDecimal balanceInEither = Convert.fromWei(balanceWei.getBalance().toString(), Convert.Unit.ETHER);
