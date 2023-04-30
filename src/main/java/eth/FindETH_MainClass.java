@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 import static org.apache.cassandra.utils.Hex.bytesToHex;
 
 public class FindETH_MainClass {
-    private final static int RRS = 10;
-    private final static int THREAD_POOL_SIZE = 32;
+    private final static int RRS = 99000;
+    private final static int THREAD_POOL_SIZE = 16;
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         long startTime = System.currentTimeMillis();
@@ -42,7 +42,7 @@ public class FindETH_MainClass {
                 System.out.println("Private Key: " + privateKey + ", Balance: " + balanceInEither);
             }
             totalBalance = totalBalance.add(balanceInEither);
-            System.out.println(entry.getKey());
+//            System.out.println(entry.getKey());
         }
 
         if (totalBalance.equals(BigDecimal.ZERO)) {
