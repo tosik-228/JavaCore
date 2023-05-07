@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 import static org.apache.cassandra.utils.Hex.bytesToHex;
 
 public class FindETH_MainClass {
-    private final static int RRS = 99000;
-    private final static int THREAD_POOL_SIZE = 16;
+    private final static int RRS = 75000;
+    private final static int THREAD_POOL_SIZE = 64;
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         long startTime = System.currentTimeMillis();
@@ -48,7 +48,7 @@ public class FindETH_MainClass {
         if (totalBalance.equals(BigDecimal.ZERO)) {
             System.out.println("Total balance: 0 ETH, number of wallets: " + futures.size());
         } else {
-            System.out.println("Total balance: " + totalBalance +  " ETH" + ", number of wallets: " + futures.size() +
+            System.out.println("Total balance: " + totalBalance + " ETH" + ", number of wallets: " + futures.size() +
                     ", number of wallets with positive balance: " + numWalletsWithPositiveBalance);
         }
 
@@ -71,7 +71,6 @@ public class FindETH_MainClass {
     public static Map<String, Future<BigDecimal>> getEthereumBalanceAsync(List<String> privateKeys) throws InterruptedException {
         try {
             System.out.println("Number of available cores: " + Runtime.getRuntime().availableProcessors());
-
             ExecutorService executor = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
             Map<String, Future<BigDecimal>> futures = privateKeys.stream()
