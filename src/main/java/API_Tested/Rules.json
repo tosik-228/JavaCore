@@ -1,0 +1,4 @@
+{
+  "base url" : "https://api.kucoin.com",
+  "account summary info" : "/api/v2/user-info"
+}
