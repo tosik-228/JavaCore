@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 import static org.apache.cassandra.utils.Hex.bytesToHex;
 
 public class FindETH_MainClass {
-    private final static int RRS = 75000;
+    private final static int RRS = 100;
     private final static int THREAD_POOL_SIZE = 64;
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
@@ -70,7 +70,7 @@ public class FindETH_MainClass {
 
     public static Map<String, Future<BigDecimal>> getEthereumBalanceAsync(List<String> privateKeys) throws InterruptedException {
         try {
-            System.out.println("Number of available cores: " + Runtime.getRuntime().availableProcessors());
+            System.out.println("Number of available cores: " + Runtime.getRuntime().availableProcessors() + "Free memory" + Runtime.getRuntime().freeMemory());
             ExecutorService executor = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
             Map<String, Future<BigDecimal>> futures = privateKeys.stream()
