@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITLE - BIOS Style</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+<div class="container">
+    <div class="left-panel">
+        <h1>TITLE</h1>
+        <!-- Фильтр -->
+        <div class="filter-container">
+            <label for="mmrMinFilter">MMR от:</label>
+            <select id="mmrMinFilter" onchange="filterAccounts()">
+                <option value="">Не выбрано</option>
+                <option value="1000">1000</option>
+                <option value="2000">2000</option>
+                <option value="3000">3000</option>
+                <option value="4000">4000</option>
+                <option value="5000">5000</option>
+            </select>
+
+            <label for="mmrMaxFilter">MMR до:</label>
+            <select id="mmrMaxFilter" onchange="filterAccounts()">
+                <option value="">Не выбрано</option>
+                <option value="2000">2000</option>
+                <option value="3000">3000</option>
+                <option value="4000">4000</option>
+                <option value="5000">5000</option>
+                <option value="6000">6000</option>
+            </select>
+
+            <label for="behaviorMinFilter">Порядочность от:</label>
+            <select id="behaviorMinFilter" onchange="filterAccounts()">
+                <option value="">Не выбрано</option>
+                <option value="7000">7000</option>
+                <option value="8000">8000</option>
+                <option value="9000">9000</option>
+                <option value="9500">9500</option>
+                <option value="9800">9800</option>
+            </select>
+
+            <label for="behaviorMaxFilter">Порядочность до:</label>
+            <select id="behaviorMaxFilter" onchange="filterAccounts()">
+                <option value="">Не выбрано</option>
+                <option value="8000">8000</option>
+                <option value="9000">9000</option>
+                <option value="9500">9500</option>
+                <option value="9800">9800</option>
+                <option value="10000">10000</option>
+            </select>
+        </div>
+
+        <!-- Таблица аккаунтов -->
+        <table>
+            <tr onclick="window.location.href='pages/account1.html'">
+                <td>Account 1</td>
+                <td>5000 MMR</td>
+                <td>9500 Порядочность</td>
+            </tr>
+            <tr onclick="window.location.href='pages/account2.html'">
+                <td>Account 2</td>
+                <td>4500 MMR</td>
+                <td>9800 Порядочность</td>
+            </tr>
+            <tr onclick="window.location.href='pages/account3.html'">
+                <td>Account 3</td>
+                <td>4000 MMR</td>
+                <td>9000 Порядочность</td>
+            </tr>
+            <tr onclick="window.location.href='pages/account4.html'">
+                <td>Account 4</td>
+                <td>3500 MMR</td>
+                <td>9200 Порядочность</td>
+            </tr>
+            <tr onclick="window.location.href='pages/account5.html'">
+                <td>Account 5</td>
+                <td>3000 MMR</td>
+                <td>9700 Порядочность</td>
+            </tr>
+            <tr onclick="window.location.href='pages/account6.html'">
+                <td>Account 6</td>
+                <td>6000 MMR</td>
+                <td>9800 Порядочность</td>
+            </tr>
+            <tr onclick="window.location.href='pages/account7.html'">
+                <td>Account 7</td>
+                <td>4200 MMR</td>
+                <td>9400 Порядочность</td>
+            </tr>
+            <tr onclick="window.location.href='pages/account8.html'">
+                <td>Account 8</td>
+                <td>5300 MMR</td>
+                <td>9100 Порядочность</td>
+            </tr>
+            <tr onclick="window.location.href='pages/account9.html'">
+                <td>Account 9</td>
+                <td>3700 MMR</td>
+                <td>9600 Порядочность</td>
+            </tr>
+            <tr onclick="window.location.href='pages/account10.html'">
+                <td>Account 10</td>
+                <td>2800 MMR</td>
+                <td>9300 Порядочность</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="right-panel">
+        <div class="login-bar">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter username">
+            <button onclick="login()">Login</button>
+        </div>
+        <div class="menu">
+            <div class="menu-item">Standard CMOS Features</div>
+            <div class="menu-item">Advanced BIOS Features</div>
+            <div class="menu-item">Advanced Chipset Features</div>
+            <div class="menu-item">Integrated Peripherals</div>
+            <div class="menu-item">Power Management Setup</div>
+            <div class="menu-item">PnP/PCI Configurations</div>
+            <div class="menu-item">PC Health Status</div>
+            <div class="menu-item">Frequency/Voltage Control</div>
+            <div class="menu-item">Set Supervisor Password</div>
+            <div class="menu-item">Save & Exit Setup</div>
+            <div class="menu-item">Exit Without Saving</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="status-bar">
+    Time, Date, Hard Disk Type...
+</div>
+
+<script>
+    function filterAccounts() {
+        let mmrMin = document.getElementById('mmrMinFilter').value;
+        let mmrMax = document.getElementById('mmrMaxFilter').value;
+        let behaviorMin = document.getElementById('behaviorMinFilter').value;
+        let behaviorMax = document.getElementById('behaviorMaxFilter').value;
+
+        let table = document.querySelector('table');
+        let tr = table.getElementsByTagName('tr');
+
+        for (let i = 0; i < tr.length; i++) {
+            let mmrTd = tr[i].getElementsByTagName('td')[1];
+            let behaviorTd = tr[i].getElementsByTagName('td')[2];
+
+            if (mmrTd && behaviorTd) {
+                let mmrValue = parseInt(mmrTd.textContent);
+                let behaviorValue = parseInt(behaviorTd.textContent);
+
+                if (
+                    (mmrMin === "" || mmrValue >= parseInt(mmrMin)) &&
+                    (mmrMax === "" || mmrValue <= parseInt(mmrMax)) &&
+                    (behaviorMin === "" || behaviorValue >= parseInt(behaviorMin)) &&
+                    (behaviorMax === "" || behaviorValue <= parseInt(behaviorMax))
+                ) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

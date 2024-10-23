@@ -1,0 +1,134 @@
+body {
+    background-color: #0000AA;
+    color: #FFFFFF;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+.left-panel {
+    width: 50%;
+    border-right: 2px solid #FFFFFF;
+    padding: 20px;
+}
+.right-panel {
+    width: 50%;
+    padding: 20px;
+}
+h1 {
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.filter-container {
+    margin-bottom: 20px;
+}
+.filter-container input {
+    margin: 5px 0;
+    padding: 5px;
+    width: 80%;
+    background-color: #0000AA;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table tr {
+    cursor: pointer;
+}
+table tr:hover {
+    background-color: #FF0000;
+}
+table td {
+    padding: 10px;
+    border: 1px solid #FFFFFF;
+    text-align: center;
+    color: #FFFFFF;
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #FFFFFF;
+    padding: 10px;
+    background-color: #0000AA;
+}
+.menu-item {
+    padding: 10px;
+    border-bottom: 1px solid #FFFFFF;
+    color: #FFFF00;
+}
+.menu-item:hover {
+    background-color: #FF0000;
+    cursor: pointer;
+}
+.menu-item:last-child {
+    border-bottom: none;
+}
+.status-bar {
+    text-align: center;
+    color: #FFFF00;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    background-color: #0000AA;
+    border-top: 2px solid #FFFFFF;
+}
+/* Эти стили обеспечивают, чтобы страница занимала весь экран */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Убираем возможность прокрутки */
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Задаем 100% высоту окна */
+    width: 100vw;  /* Задаем 100% ширину окна */
+}
+
+.left-panel, .right-panel {
+    height: 100%;
+    overflow: auto; /* Позволяет контенту прокручиваться, если он больше экрана, но не самому body */
+}
+.login-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #FFFFFF;
+    padding: 10px;
+    background-color: #0000AA;
+    color: #FFFF00;
+    margin-bottom: 10px; /* Отступ вниз перед меню */
+}
+
+.login-bar label {
+    margin-right: 10px;
+}
+
+.login-bar input {
+    background-color: #0000AA;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.login-bar button {
+    background-color: #0000AA;
+    color: #FFFF00;
+    border: 1px solid #FFFFFF;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.login-bar button:hover {
+    background-color: #FF0000;
+}
