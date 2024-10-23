@@ -13,10 +13,11 @@ import java.math.BigInteger;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class EthGenerator {
-    private final static int PRIVATE_KEY = 100;
+    private final static int PRIVATE_KEY = 10;
 
     public static void main(String[] args) throws IOException, InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchProviderException, CipherException {
 
@@ -52,7 +53,7 @@ public class EthGenerator {
             BigDecimal balanceInEther = Convert.fromWei(balance.getBalance().toString(), Convert.Unit.ETHER);
 
             BigDecimal u = BigDecimal.valueOf(0);
-            if (balanceInEther.compareTo(u) > 0) {
+            if (balanceInEther.compareTo(u) >= 0) {
                 System.out.println("Balance: ");
                 System.out.println(balanceInEther);
 
@@ -67,9 +68,10 @@ public class EthGenerator {
         }
 
         System.out.println("NO MONEY YET");
-//      System.out.println("Load wallet: " + (new DecimalFormat("#,###,###").format(h)));
-        System.out.format("%,1d,%n%n", h);
+        System.out.println("Load wallet: " + (new DecimalFormat("#,###,###").format(h)));
+//        System.out.format("%,1d,%n%n", h);
         System.out.println("Total balance: " + result + " ETH");
+
         System.exit(1);
 
     }

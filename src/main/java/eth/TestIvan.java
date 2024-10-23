@@ -14,7 +14,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class TestIvan {
-    private final static int RRS = 1000000;
+    private final static int RRS = 10;
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         long startTime = System.currentTimeMillis();

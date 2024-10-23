@@ -42,7 +42,7 @@ public class FindETH_MainClass {
                 System.out.println("Private Key: " + privateKey + ", Balance: " + balanceInEither);
             }
             totalBalance = totalBalance.add(balanceInEither);
-//            System.out.println(entry.getKey());
+            System.out.println(entry.getKey());
         }
 
         if (totalBalance.equals(BigDecimal.ZERO)) {
