@@ -2,9 +2,105 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/main/java/AccExchange/resources/static/css/main.css">
 </head>
 <body>
+<header>
+    <div class="logo">
+        <h1>Account Marketplace</h1>
+    </div>
+    <nav class="main-nav">
+        <ul>
+            <li>
+                <label for="language-select">Language:</label>
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="nl">Dutch</option>
+                    <option value="de">German</option>
+                </select>
+            </li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Promotions</a></li>
+        </ul>
+    </nav>
+    <div class="login-container">
+        <button onclick="login()">Login</button>
+    </div>
+</header>
 
+<main>
+    <!-- Левый блок с изображением и основными характеристиками -->
+    <section class="account-details">
+        <div class="account-main">
+            <img src="/src/main/java/AccExchange/resources/static/img/titan_rank_image.jpeg" alt="Account Screenshot" class="account-image">
+            <div class="account-stats">
+                <h3>Account Information</h3>
+                <p><strong>Rank:</strong> Immortal</p>
+                <p><strong>MMR:</strong> 11,178</p>
+                <p><strong>Level:</strong> 24</p>
+                <p><strong>Behavior Score:</strong> 7,956</p>
+            </div>
+        </div>
+
+        <!-- Правый блок с ценой и кнопкой покупки -->
+        <div class="account-offer">
+            <p class="price">Price: <span class="price-amount">€375.1</span></p>
+            <input type="email" placeholder="Your E-mail">
+            <button class="buy-now-btn">Buy Now</button>
+        </div>
+    </section>
+
+    <!-- Секция характеристик аккаунта -->
+    <section class="account-characteristics">
+        <h3>Account Characteristics</h3>
+        <div class="characteristics-grid">
+            <div class="characteristic-item">
+                <p><strong>Dotabuff:</strong> <a href="#">View on Dotabuff</a></p>
+            </div>
+            <div class="characteristic-item">
+                <p><strong>Steam Profile:</strong> <a href="#">View on Steam</a></p>
+            </div>
+            <div class="characteristic-item">
+                <p><strong>Inventory:</strong> <a href="#">View Inventory</a></p>
+            </div>
+            <div class="characteristic-item">
+                <p><strong>Total Matches:</strong> 184</p>
+            </div>
+            <div class="characteristic-item">
+                <p><strong>Calibration:</strong> Not required</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция преимуществ -->
+    <section class="account-benefits">
+        <h3>Benefits</h3>
+        <ul>
+            <li>Instant delivery</li>
+            <li>Full access</li>
+            <li>Verified account</li>
+            <li>24/7 Support</li>
+            <li>Safety accounts</li>
+            <li>+28,999 tickets</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Account Marketplace - Trusted by European Players</p>
+    <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+    </ul>
+</footer>
+
+<script>
+    function login() {
+        // Логика входа
+    }
+</script>
 </body>
 </html>
