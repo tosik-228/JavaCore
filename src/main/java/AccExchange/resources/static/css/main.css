@@ -99,7 +99,9 @@ header {
 
 /* Фильтры */
 .filters {
+
     margin: 20px 0;
+    padding: 10px;
 }
 
 .filters h3 {
@@ -141,6 +143,7 @@ header {
 /* Карточки акаунтов */
 .account-list {
     margin-top: 20px;
+    padding: 10px;
 }
 
 .accounts-grid {
